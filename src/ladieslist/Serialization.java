@@ -16,7 +16,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public final class Serialization {
-private static String fname;
+private static String fname = "ladies.txt";
 
     void write(Object obj) throws IOException {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fname))) {

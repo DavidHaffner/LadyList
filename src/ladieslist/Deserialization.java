@@ -16,11 +16,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public final class Deserialization {
-private static String fname;
+private static String fname = "ladies.txt";
 
-    void read(Object obj) throws IOException {
+    void read(Object obj) throws IOException, ClassNotFoundException {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(fname))) {
-            in.readObject(obj);
+            in.readObject();
         }
     }
 }
