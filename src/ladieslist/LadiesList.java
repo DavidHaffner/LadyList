@@ -59,17 +59,19 @@ public class LadiesList {
          */
         Scanner sc;
         String pomB = "";
+        Deserialization deserialization = new Deserialization();
+        Serialization serialization = new Serialization();
         /**
          * prom. reprezentuje hlavní seznam záznamů o milenkách
          */
         ArrayList<LadyRecord> seznam = new ArrayList<LadyRecord>();
         
         /** Nejdříve načteme uložená data */
-        try { deserialization(); }
+        try {deserialization.read(seznam); }
         catch (Exception e) {System.out.println("Načtení ze souboru se nepovedlo"); }
-        finally {zavriSoubor(); }
+        // asi není potřeba:   finally {zavriSoubor(); }
         /** Tady běhá smyčka s volbou funkcí - všechny možné procedury na seznamu */
-        while (pomB != "a") {
+        while (true) {
             System.out.println("ZÁLETNÍKŮV DENÍČEK");
             System.out.printf("Volby:\n1-vložit novou milenku\n2-vypsat všechny milenky"
                     + "\n3-vymazat milenku\n");
@@ -91,10 +93,13 @@ public class LadiesList {
             }
             System.out.println("Chceš skončit (a-ano)? ");
             pomB = new Scanner(System.in).nextLine();
+            if (pomB == "a") {
+                return;
+            }
         }
         /** A na závěr uložení dat do souboru*/
-        try {serialization(); }
+        try {serialization.write(seznam); }
         catch (Exception e) {System.out.println("Zápis do souboru se nepovedl"); }
-        finally {zavriSoubor(); }
+        // asi není potřeba: finally {zavriSoubor(); }
     }
 }
