@@ -8,8 +8,7 @@ package ladieslist;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * seznam repr. soubor všech záznamů o ladies
+/* seznam repr. soubor všech záznamů o ladies
  * @author DHA
  */
 public class LadiesSeznam {
@@ -17,14 +16,12 @@ public class LadiesSeznam {
     
     public void LadiesSeznam () {
         this.seznam = seznam;
-        /** Rovnou i načte seznam ze souboru                               !!!*/
+        /* Rovnou i načte seznam ze souboru                               !!!*/
         
     }
     
-    /**
-     * Metoda přidá instanci ladyRecord do ArrayListu
-     */
-    public static void vlozLR(ArrayList<LadyRecord> seznam) {
+    /* Metoda přidá instanci ladyRecord do ArrayListu */
+    public void vlozLR(ArrayList<LadyRecord> seznam) {
         System.out.println("Zadej jméno: ");
         String jmeno = new Scanner(System.in).nextLine();
         System.out.println("Zadej přezdívku: ");
@@ -34,27 +31,22 @@ public class LadiesSeznam {
 
         LadyRecord ladyRecord = new LadyRecord(jmeno, prezdivka, vek);
         seznam.add(ladyRecord);
-        /** a rovnou i uloží do souboru                                    !!!*/
+        /* a rovnou i uloží do souboru                                    !!!*/
         
     }
-    /**
-     * Metoda vypíše všechny instance ladyRecord z ArrayListu
-     */
-    public static void vypisLR(ArrayList<LadyRecord> seznam) {
+    /* Metoda vypíše všechny instance ladyRecord z ArrayListu */
+    public void vypisLR(ArrayList<LadyRecord> seznam) {
         for (LadyRecord lr : seznam) {
             lr.toString();
         }
-        /** a rovnou i uloží do souboru                                    !!!*/
+        /* a rovnou i uloží do souboru                                    !!!*/
         
     }
-    /**
-     * Metoda vymaže konkr. instanci ladyRecord z ArrayListu
-     */
-    public static void vymazLR(ArrayList<LadyRecord> seznam) {
+    /* Metoda vymaže konkr. instanci ladyRecord z ArrayListu */
+    public void vymazLR(ArrayList<LadyRecord> seznam) {
         System.out.println("Zadej číslo záznamu k vymazání: ");
         int pom = new Scanner(System.in).nextInt();
         seznam.remove(pom - 1);
-    }
-    /** a rovnou i uloží do souboru                                        !!!*/
-    
+        /* a rovnou i uloží do souboru                                    !!!*/
+    }   
 }

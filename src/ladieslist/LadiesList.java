@@ -8,36 +8,29 @@ package ladieslist;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Hlavní třída umožňující práci se seznamem ladies, které vede v ArrayListu
- *
+/* Hlavní třída umožňující práci se seznamem ladies, které vede v ArrayListu
  * @author DHA
  */
 public class LadiesList {
 
-    
-
-    /**
-     * Hlavní metoda pro práci se seznamem
-     *
+    /* Hlavní metoda pro práci se seznamem
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /**
-         * pomocné proměnné
-         */
+        /* pomocné proměnné */
         Scanner sc;
         String pomB = "";
-        /**
-         * prom. reprezentuje hlavní seznam záznamů o milenkách
-         */
-        ArrayList<LadyRecord> seznam = new ArrayList<LadyRecord>();
-        
-        /** Nejdříve načteme uložená data */
-        try {Static.read(seznam); }
-        catch (Exception e) {System.out.println("Načtení ze souboru se nepovedlo"); }
-      
-        /** Tady běhá smyčka s volbou funkcí - všechny možné procedury na seznamu */
+        /* prom. reprezentuje hlavní seznam záznamů o milenkách */
+        LadiesSeznam seznam = new LadiesSeznam();
+
+        // Nejdříve načteme uložená data
+        try {
+            Static.read(seznam);
+        } catch (Exception e) {
+            System.out.println("Načtení ze souboru se nepovedlo");
+        }
+
+        /* Tady běhá smyčka s volbou funkcí - všechny možné procedury na seznamu */
         while (true) {
             System.out.println("ZÁLETNÍKŮV DENÍČEK");
             System.out.printf("Volby:\n1-vložit novou milenku\n2-vypsat všechny milenky"
@@ -64,9 +57,11 @@ public class LadiesList {
                 break;
             }
         }
-        /** A na závěr uložení dat do souboru*/
-        try {Static.write(seznam); }
-        catch (Exception e) {System.out.println("Zápis do souboru se nepovedl"); }
-     
+        /* A na závěr uložení dat do souboru */
+        try {
+            Static.write(seznam);
+        } catch (Exception e) {
+            System.out.println("Zápis do souboru se nepovedl");
+        }
     }
 }
