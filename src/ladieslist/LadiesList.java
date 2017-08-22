@@ -93,8 +93,8 @@ public class LadiesList {
             }
             System.out.println("Chceš skončit (a-ano)? ");
             pomB = new Scanner(System.in).nextLine();
-            if (pomB == "a") {
-                return;
+            if (pomB.equals("a")) {
+                break;
             }
         }
         /** A na závěr uložení dat do souboru*/
