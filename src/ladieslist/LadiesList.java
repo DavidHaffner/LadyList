@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /* Hlavní třída umožňující práci se seznamem ladies, které vede v ArrayListu
+ z LadiesSeznam
  * @author DHA
  */
 public class LadiesList {
@@ -18,17 +19,9 @@ public class LadiesList {
      */
     public static void main(String[] args) {
         /* pomocné proměnné */
-        Scanner sc;
         String pomB = "";
         /* prom. reprezentuje hlavní seznam záznamů o milenkách */
-        LadiesSeznam seznam = new LadiesSeznam();
-
-        // Nejdříve načteme uložená data
-        try {
-            Static.read(seznam);
-        } catch (Exception e) {
-            System.out.println("Načtení ze souboru se nepovedlo");
-        }
+        LadiesSeznam hlSeznam = new LadiesSeznam();        
 
         /* Tady běhá smyčka s volbou funkcí - všechny možné procedury na seznamu */
         while (true) {
@@ -39,13 +32,13 @@ public class LadiesList {
             int pom = new Scanner(System.in).nextInt();
             switch (pom) {
                 case 1:
-                    LadiesSeznam.vlozLR(seznam);
+                    hlSeznam.vlozLR(hlSeznam.seznam);
                     break;
                 case 2:
-                    LadiesSeznam.vypisLR(seznam);
+                    hlSeznam.vypisLR(hlSeznam.seznam);
                     break;
                 case 3:
-                    LadiesSeznam.vymazLR(seznam);
+                    hlSeznam.vymazLR(hlSeznam.seznam);
                     break;
                 default:
                     System.out.println("Chyba volby ...");
@@ -56,12 +49,6 @@ public class LadiesList {
             if (pomB.equals("a")) {
                 break;
             }
-        }
-        /* A na závěr uložení dat do souboru */
-        try {
-            Static.write(seznam);
-        } catch (Exception e) {
-            System.out.println("Zápis do souboru se nepovedl");
         }
     }
 }
