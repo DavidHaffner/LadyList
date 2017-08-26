@@ -8,8 +8,8 @@ package ladieslist;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/* Hlavní třída umožňující práci se seznamem ladies, které vede v ArrayListu
- z LadiesSeznam
+/* Hlavní třída pracující s databází LadiesDatabase, které vede v ArrayListu
+ jednotlivé LadiesRecord
  * @author DHA
  */
 public class LadiesList {
@@ -20,8 +20,8 @@ public class LadiesList {
     public static void main(String[] args) {
         /* pomocné proměnné */
         String pomB = "";
-        /* prom. reprezentuje hlavní seznam záznamů o milenkách */
-        LadiesSeznam hlSeznam = new LadiesSeznam();        
+        /* prom. reprezentuje hlavní databázi záznamů o milenkách */
+        LadiesDatabase ladiesDatabase = new LadiesDatabase();        
 
         /* Tady běhá smyčka s volbou funkcí - všechny možné procedury na seznamu */
         while (true) {
@@ -30,15 +30,26 @@ public class LadiesList {
                     + "\n3-vymazat milenku\n");
             System.out.println("Tvoje volba? ");
             int pom = new Scanner(System.in).nextInt();
+            
             switch (pom) {
                 case 1:
-                    hlSeznam.vlozLR(hlSeznam.seznam);
+                    System.out.println("Zadej jméno: ");
+                    String jmeno = new Scanner(System.in).nextLine();
+                    System.out.println("Zadej přezdívku: ");
+                    String prezdivka = new Scanner(System.in).nextLine();
+                    System.out.println("Zadej věk: ");
+                    int vek = new Scanner(System.in).nextInt();
+                    
+                    ladiesDatabase.vlozLR(new LadyRecord(jmeno, prezdivka, vek));
                     break;
                 case 2:
-                    hlSeznam.vypisLR(hlSeznam.seznam);
+                    ladiesDatabase.vypisLR();
                     break;
                 case 3:
-                    hlSeznam.vymazLR(hlSeznam.seznam);
+                    System.out.println("Zadej číslo záznamu k vymazání: ");
+                    int cisloVymaz = new Scanner(System.in).nextInt();
+                    
+                    ladiesDatabase.vymazLR(cisloVymaz);
                     break;
                 default:
                     System.out.println("Chyba volby ...");
